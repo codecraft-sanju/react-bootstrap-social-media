@@ -1,16 +1,12 @@
 const Sidebar = ({ selectedTab, setSelectedTab }) => {
-  const handleOnClick = (tabName) => {
-    setSelectedTab(tabName);
-  };
-
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-      style={{ width: '280px' }}
+      className="flex-shrink-0 p-3 d-flex flex-column text-bg-dark sidebar"
+      style={{ width: '180px' }}
     >
       <a
         href="/"
-        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        className="mb-3 text-white d-flex align-items-center mb-md-0 me-md-auto text-decoration-none"
       >
         <svg className="bi pe-none me-2" width="40" height="32">
           <use xlinkHref="#bootstrap"></use>
@@ -18,17 +14,19 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
         <span className="fs-4">Sidebar</span>
       </a>
       <hr />
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
+      <ul className="mb-auto nav nav-pills flex-column">
+        <li
+          className="nav-item"
+          onClick={() => {
+            setSelectedTab('Home');
+          }}
+        >
           <a
             href="#"
-            role="button"
             className={`nav-link text-white ${
-              selectedTab === 'Home' ? 'active' : ''
+              selectedTab === 'Home' && 'active'
             }`}
-            aria-current={selectedTab === 'Home' ? 'page' : undefined}
-            aria-selected={selectedTab === 'Home'}
-            onClick={() => handleOnClick('Home')}
+            aria-current="page"
           >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
@@ -36,15 +34,16 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
             Home
           </a>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            setSelectedTab('Create Post');
+          }}
+        >
           <a
             href="#"
-            role="button"
             className={`nav-link text-white ${
-              selectedTab === 'Create Post' ? 'active' : ''
+              selectedTab === 'Create Post' && 'active'
             }`}
-            aria-selected={selectedTab === 'Create Post'}
-            onClick={() => handleOnClick('Create Post')}
           >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#speedometer2"></use>
@@ -57,20 +56,20 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
       <div className="dropdown">
         <a
           href="#"
-          className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+          className="text-white d-flex align-items-center text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <img
             src="https://github.com/mdo.png"
-            alt="User"
+            alt=""
             width="32"
             height="32"
             className="rounded-circle me-2"
           />
           <strong>mdo</strong>
         </a>
-        <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
+        <ul className="shadow dropdown-menu dropdown-menu-dark text-small">
           <li>
             <a className="dropdown-item" href="#">
               New project...
